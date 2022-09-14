@@ -1,15 +1,12 @@
-import './App.css';
-import Post from './components/post';
-import AddPostForm from './components/addPostForm';
-import AddCommentForm from '../components/addCommentForm';
-
+import "./App.css";
+import Post from "./components/Post";
+import AddPostForm from "./components/Add-post-form"; 
 function App() {
   return (
     <div className="App">
-      <h1 className='text-center text-5xl'>hello</h1>
+          <AddPostForm />
+
       <Post />
-      <AddCommentForm />
-      <AddPostForm />
     </div>
   );
 }

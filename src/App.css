@@ -1,3 +1,7 @@
+*{
+  background-color: #4c4f56;
+}
+
 .App {
   text-align: center;
 }
@@ -36,3 +40,102 @@
     transform: rotate(360deg);
   }
 }
+
+.post-class{display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ 
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+  border-radius: 10px;
+  border-width: 1px;
+
+}
+
+  img{
+    margin-top: 6px;
+  }
+
+.add-post-form{
+  box-shadow:inset;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+  width: 50%;
+  margin-left: 25%;
+}
+
+.form-style{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+.form-style1{
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  color: rgb(255, 255, 255); 
+  border: 2px solid #4c4f56;
+  border-radius: 3px;
+}
+
+.form-style1:hover {
+  background-color: #000000;
+  color: #4c4f56;
+}
+
+.label{
+  color: white;
+  font-size: 20px;
+  margin: 10px;
+}
+
+.input{
+  width: 300px;
+  height: 30px;
+  border-radius: 3px;
+  border: 2px solid #c2c6ce;
+  margin: 10px;
+}
+
+
+
+
+
+
+
+/* .add-post-form input{
+  margin: 10px;
+}
+
+.add-post-form button{
+  margin: 10px;
+}
+
+.post-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+ */
+
+
