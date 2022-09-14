@@ -36,8 +36,9 @@ function addPostForm ( props ) {
                         <input type='text' placeholder="Add image link address" name="img"></input>
                     </div>
                     <div className="form-style1">
-                        <input type="submit"  />
+                        <input type="submit"/>
                     </div>
+                    
                 </form>
             </div>
         </>
