@@ -28,7 +28,7 @@ function Post ( props ) {
 
     useEffect( () => {
         getData();
-    }, [] );
+    }, [props.rerender] );
     return (
         <>
             {post && post.map( ( post, idx ) => {
