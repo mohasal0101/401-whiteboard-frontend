@@ -18,7 +18,7 @@ function AddCommentForm ( props ) {
     return (
         <>
             <div className="add-comment-form">
-                <h2>Add Comment</h2>
+                <h2>Say something 😁</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="form-control">
                         <textarea placeholder="Add Comment content" name="content"></textarea>

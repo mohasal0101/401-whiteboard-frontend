@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import AddCommentForm from "./addCommentForm";
+import AddCommentForm from "./Add-comment-form";
 import React from 'react';
+
+
 
 
 function Post ( props ) {
@@ -19,19 +21,23 @@ function Post ( props ) {
 
     useEffect( () => {
         getData();
-    }, [ props.rerender ] );
+    }, [] );
     return (
         <>
             {post && post.map( ( post, idx ) => {
                 return (
-                    <div className="post-class" style={{ justifyContent: 'center', margin: '1rem' }} key={idx}>
+                    <div>
+                         <div className="post-class" style={{ justifyContent: 'center', margin: '1rem' }} key={idx}>
+                        
+                      
                         <img src={post.img} alt={post.title} style={{ width: "15rem" }} />
                         <div className="card-body">
                             <h1 className="card-title">{post.title}</h1>
                             <p className="card-text">{post.content}</p>
-                        </div>
+                    </div>
+                   
                         <div>
-                            <button onClick={() => {
+                            <button  onClick={() => {
                                 handleDelete( post.id );
                             }}>delete post</button>
                         </div>
@@ -49,6 +55,7 @@ function Post ( props ) {
                                 );
                             }
                             )}
+                              </div>
                             <AddCommentForm postId={post.id} getData={getData} />
                         </div>
                     </div>
