@@ -17,6 +17,11 @@ function addPostForm ( props ) {
         ).then( () => {
             props.getData();
         } );
+
+      /*   const handleUpdate = async ( id, post ) => {
+            await axios.put( `https://server-401.herokuapp.com/post/${id}`, post );
+            getData();
+        } */
     };
     return (
         <>
@@ -37,6 +42,14 @@ function addPostForm ( props ) {
                     </div>
                     <div className="form-style1">
                         <input type="submit"/>
+                        </div>
+                    <div className="update-post-form">
+                            <h2>Update Post</h2>
+                            <button onSubmit={props.rerender}>
+                                Update
+                            </button>
+
+                    
                     </div>
                     
                 </form>
