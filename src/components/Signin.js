@@ -22,7 +22,6 @@ function Signin() {
             }
         ).then ( (res) => {
             if (res.status === 200) {
-                localStorage.setItem('token', true);
                 window.location.href = '/posts';
             }
         } ).catch( (err) => {
@@ -35,8 +34,8 @@ function Signin() {
 
         <div className="container">
             <div class="ocean">
-    <div class="wave"></div>
-    </div>
+            <div class="wave"></div>
+            </div>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="username">Username</label>

@@ -27,8 +27,8 @@ function Signup() {
                 localStorage.setItem('token', true);
                 window.location.href = '/posts';
             } 
-        }).catch( (err) => {
-            alert('Username or email already exists');
+          }).catch( (err) => {
+            alert('Username or email already exists'); 
         } );
     };
     };
