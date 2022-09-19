@@ -35,6 +35,9 @@ function Signup() {
     return (
         <Container>
         <div className="container">
+        <div class="ocean">
+            <div class="wave"></div>
+            </div>
         <Form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
