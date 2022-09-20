@@ -10,18 +10,18 @@ import React from 'react';
 function Post ( props ) {
     const [ post, setPost ] = useState( [] );
     const getData = async () => {
-        const response = await axios.get( `https://server-401.herokuapp.com/post` );
+        const response = await axios.get( `https://whiteboarding-backend-401.herokuapp.com/post` );
         setPost( response.data.posts );
     };
 
 
     const handleDelete = async ( id ) => {
-        await axios.delete( `https://server-401.herokuapp.com/post/${id}` );
+        await axios.delete( `https://whiteboarding-backend-401.herokuapp.com/post/${id}` );
         getData();
     };
 
     const handleUpdate = async ( id, post ) => {
-        await axios.put( `https://server-401.herokuapp.com/post/${id}`, post );
+        await axios.put( `https://whiteboarding-backend-401.herokuapp.com/post/${id}`, post );
         getData();
     };
     
