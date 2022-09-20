@@ -9,7 +9,7 @@ function AddCommentForm ( props ) {
             'content': e.target.content.value,
         };
         await axios.post(
-            `https://server-401.herokuapp.com/comment/${props.postId}`,
+            `https://whiteboarding-backend-401.herokuapp.com/comment/${props.postId}`,
             comment
         ).then( () => {
             props.getData();

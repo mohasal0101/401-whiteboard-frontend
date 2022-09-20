@@ -12,7 +12,7 @@ function addPostForm ( props ) {
 
         };
         await axios.post(
-            `https://server-401.herokuapp.com/post`,
+            `https://whiteboarding-backend-401.herokuapp.com/post`,
             post
         ).then( () => {
             props.getData();
