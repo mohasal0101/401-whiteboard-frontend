@@ -114,13 +114,17 @@
   margin: 10px;
 }
 
-
+.href{
+  color: white;
+  text-decoration: none;
+}
 .container{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 20px;
+  margin-bottom: 10%;
 }
 
 .form-group
@@ -164,7 +168,7 @@
 }
 
 .container button:hover {
-  background-color: #000000;
+  background-color: #d285da;
   color: #2d2d2d;
 }
 
@@ -195,12 +199,21 @@ body {
   background: #6b5da4;
 }
 
+.form-header{
+  font-size: 70px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #553c9a, #b393d3);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
 .wave {
   background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/wavePurple.svg) repeat-x;
   position: absolute;
   bottom: -10px;
   width: 6400px;
-  height: 198px;
+  height: 90px;
   animation: wave 12s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite, swell 8s ease -1.25s infinite;;
   transform: translate3d(0, 0, 0);
 }
