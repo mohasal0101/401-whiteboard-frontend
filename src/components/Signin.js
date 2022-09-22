@@ -1,5 +1,6 @@
 import axios from "axios";
 import base64 from "base-64";
+import cookies from 'react-cookies';
 import "../App.css";
 
 
@@ -22,7 +23,13 @@ function Signin() {
             }
         ).then ( (res) => {
             if (res.status === 200) {
+                localStorage.setItem('token', res.data.token);
                 window.location.href = '/posts';
+                cookies.save('auth', res.data.token);
+                cookies.save('user', res.data.user);
+                cookies.save('username', res.data.user.username);
+                cookies.save('email', res.data.user.email);
+                cookies.save('token', res.data.token);
             }
         } ).catch( (err) => {
             alert('Invalid Login');
@@ -38,6 +45,7 @@ function Signin() {
             </div>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
+                    <h1 className="form-header">Sign in form</h1>
                     <label htmlFor="username">Username</label>
                     <input type="text" className="form-control" id="username" name="username" />
                 </div>
@@ -50,7 +58,7 @@ function Signin() {
                     <label htmlFor="email">Email</label>
                     <input type="email" className="form-control" id="email" name="email" />
                 </div>
-                <p>Don't have an account? <a href="/signup">Sign up now</a></p>
+                <p>Don't have an account? <a href="/signup" className="href">Sign up now</a></p>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
                 
