@@ -11,10 +11,11 @@ function Signin() {
         const user = {
             'username': e.target.username.value,
             'password': e.target.password.value,
+            'role': e.target.role.value
         };
         const encoded = base64.encode(`${user.username}:${user.password}`);
         await axios.post(
-            `https://whiteboarding-backend-401.herokuapp.com/signin`,
+            `${process.env.REACT_APP_HEROKU_URL}/signin`,
             {},
             {
                 headers: {
@@ -30,6 +31,7 @@ function Signin() {
                 cookies.save('username', res.data.user.username);
                 cookies.save('email', res.data.user.email);
                 cookies.save('token', res.data.token);
+                cookies.save('role', res.data.user.role);
             }
         } ).catch( (err) => {
             alert('Invalid Login');
@@ -53,11 +55,7 @@ function Signin() {
                     <label htmlFor="password">Password</label>
                     <input type="password" className="form-control" id="password" name="password" />
                 </div>
-
-                <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input type="email" className="form-control" id="email" name="email" />
-                </div>
+                
                 <p>Don't have an account? <a href="/signup" className="href">Sign up now</a></p>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>

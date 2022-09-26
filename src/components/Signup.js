@@ -7,7 +7,6 @@ import cookies from 'react-cookies';
 
 
 
-
 function Signup() {
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,25 +17,24 @@ function Signup() {
         const user = {
             'username': e.target.username.value,
             'password': e.target.password.value,
+            'role': e.target.role.value,
         };
         await axios.post(
             `https://whiteboarding-backend-401.herokuapp.com/signup`,
             user
         ).then( (res) => {
             if (res.status === 200) {
-                localStorage.setItem('token', res.data.token);
+                cookies.save( 'token', res.data.token );
+                cookies.save( 'user_id', res.data.user.id );
+                cookies.save( 'username', res.data.user.username );
+                cookies.save( 'role', res.data.user.role );
                 window.location.href = '/posts';
-                cookies.save('auth', res.data.token);
-                cookies.save('user', res.data.user);
-                cookies.save('username', res.data.user.username);
-                cookies.save('email', res.data.user.email);
-                cookies.save('token', res.data.token);                
             } 
-          }).catch( (err) => {
-            alert('Username already exists'); 
+        }).catch( (err) => {
+            alert('Username or email already exists');
         } );
-
     };
+    
     };
     return (
         <Container>
@@ -56,6 +54,11 @@ function Signup() {
                     <label htmlFor="confirmPassword">Confirm Password</label>
                     <input type="password" className="form-control" id="confirmPassword" name="confirmPassword" />
                 </div>
+                <div className="Role">
+                    <label htmlFor="role">Role</label>
+                    <input  type="checkbox" checked="checked" name="role" value="user"/> User 
+                    <input  type="checkbox"  name="role" value="user"/> Admin 
+                 </div>
                 
                 <Button type="submit" className="btn btn-primary">Submit</Button>
                 </Form>
