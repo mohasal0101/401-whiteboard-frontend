@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import AddCommentForm from "./Add-comment-form";
 import React from 'react';
+import cookies from 'react-cookies';
 
 
 
@@ -10,18 +11,33 @@ import React from 'react';
 function Post ( props ) {
     const [ post, setPost ] = useState( [] );
     const getData = async () => {
-        const response = await axios.get( `https://whiteboarding-backend-401.herokuapp.com/post` );
-        setPost( response.data.posts );
+        await axios.get( `${process.env.REACT_APP_HEROKU_URL}/post
+        post`, {
+            headers: {
+                Authorization: `Bearer ${cookies.load('token')}`
+            }
+        })
+            .then( ( res ) => {
+                setPost( res.data );
+            } ).catch( ( err ) => {
+                console.log( err );
+            } );
+
     };
 
 
     const handleDelete = async ( id ) => {
-        await axios.delete( `https://whiteboarding-backend-401.herokuapp.com/post/${id}` );
+        await axios.delete( `${process.env.REACT_APP_HEROKU_URL}/post
+        post/${id}` );
         getData();
     };
 
     const handleUpdate = async ( id, post ) => {
-        await axios.put( `https://whiteboarding-backend-401.herokuapp.com/post/${id}`, post );
+        await axios.put( `${process.env.REACT_APP_HEROKU_URL}/post
+        post/${id}`, post );
+        
+        
+
         getData();
     };
     
@@ -44,6 +60,10 @@ function Post ( props ) {
                         <div className="card-body">
                             <h1 className="card-title">{post.title}</h1>
                             <p className="card-text">{post.content}</p>
+                            {cookies.load('role') === 'admin' && <button onClick={() => {
+                                handleDelete( post.id );
+                            }}>delete data</button>}
+                            
                            
                     </div>
                    
