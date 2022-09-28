@@ -1,27 +1,28 @@
 import axios from "axios";
 import React from "react";
+import cookies from 'react-cookies';
 
 
 function addPostForm ( props ) {
     const handleSubmit = async ( e ) => {
         e.preventDefault();
+        
         const post = {
             'title': e.target.title.value,
             'content': e.target.content.value,
             'img': e.target.img.value,
-
+            'userID': cookies.load( 'user_id' ),
         };
         await axios.post(
             `https://whiteboarding-backend-401.herokuapp.com/post`,
-            post
+            post, {
+                headers: {
+                    'Authorization': `bearer ${cookies.load('token')}`
+                }
+            }
         ).then( () => {
             props.getData();
         } );
-
-      /*   const handleUpdate = async ( id, post ) => {
-            await axios.put( `https://server-401.herokuapp.com/post/${id}`, post );
-            getData();
-        } */
     };
     return (
         <>
