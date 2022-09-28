@@ -11,8 +11,7 @@ import cookies from 'react-cookies';
 function Post ( props ) {
     const [ post, setPost ] = useState( [] );
     const getData = async () => {
-        await axios.get( `${process.env.REACT_APP_HEROKU_URL}/post
-        post`, {
+        await axios.get( `https://whiteboarding-backend-401.herokuapp.com/post`, {
             headers: {
                 Authorization: `Bearer ${cookies.load('token')}`
             }
@@ -26,21 +25,29 @@ function Post ( props ) {
     };
 
 
+
     const handleDelete = async ( id ) => {
-        await axios.delete( `${process.env.REACT_APP_HEROKU_URL}/post
-        post/${id}` );
-        getData();
+        let confirm = prompt("Please type DELETE");
+        if(confirm === "DELETE"){
+            await axios.delete( `https://whiteboarding-backend-401.herokuapp.com/post/${id}` , {
+                headers: {
+                    'Authorization': `Bearer ${cookies.load('token')}`
+                }
+            } );
+            getData();
+        } else handleDelete()
     };
-
-    const handleUpdate = async ( id, post ) => {
-        await axios.put( `${process.env.REACT_APP_HEROKU_URL}/post
-        post/${id}`, post );
-        
-        
-
-        getData();
+    const handleUpdate = async ( id ) => {
+        let confirm = prompt("Please type UPDATE");
+        if(confirm === "UPDATE"){
+            await axios.put( `https://whiteboarding-backend-401.herokuapp.com/post/${id}` , {
+                headers: {
+                    'Authorization': `Bearer ${cookies.load('token')}`
+                }
+            } );
+            getData();
+        } else handleUpdate()
     };
-    
 
     useEffect( () => {
         getData();
@@ -58,6 +65,7 @@ function Post ( props ) {
                         <img src={post.img} alt={post.title} style={{ width: "15rem" }} />
                         
                         <div className="card-body">
+                            
                             <h1 className="card-title">{post.title}</h1>
                             <p className="card-text">{post.content}</p>
                             {cookies.load('role') === 'admin' && <button onClick={() => {

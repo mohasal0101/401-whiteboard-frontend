@@ -5,8 +5,6 @@ import Button from 'react-bootstrap/Button';
 import "../App.css";
 import cookies from 'react-cookies';
 
-
-
 function Signup () {
     const handleSubmit = async ( e ) => {
         e.preventDefault();
@@ -31,11 +29,10 @@ function Signup () {
                     cookies.save( 'role', res.data.user.role );
                     window.location.href = '/posts';
                 }
-        }).catch( (err) => {
-            alert('Username or email already exists');
-        } );
-    };
-    
+            } ).catch( ( err ) => {
+                alert( 'Username or email already exists' );
+            } );
+        };
     };
     return (
         <Container>
@@ -55,6 +52,12 @@ function Signup () {
                     <label htmlFor="confirmPassword">Confirm Password</label>
                     <input type="password" className="form-control" id="confirmPassword" name="confirmPassword" />
                 </div>
+
+                <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input type="email" className="form-control" id="email" name="email" />
+                </div>
+
                 <div className="Role">
                     <label htmlFor="role">Role</label>
                     <input  type="checkbox" checked="checked" name="role" value="user"/> User 
