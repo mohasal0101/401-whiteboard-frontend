@@ -11,11 +11,10 @@ function Signin() {
         const user = {
             'username': e.target.username.value,
             'password': e.target.password.value,
-            'role': e.target.role.value
         };
         const encoded = base64.encode(`${user.username}:${user.password}`);
         await axios.post(
-            `${process.env.REACT_APP_HEROKU_URL}/signin`,
+            `https://whiteboarding-backend-401.herokuapp.com/signin`,
             {},
             {
                 headers: {
@@ -24,14 +23,11 @@ function Signin() {
             }
         ).then ( (res) => {
             if (res.status === 200) {
-                localStorage.setItem('token', res.data.token);
-                window.location.href = '/posts';
-                cookies.save('auth', res.data.token);
-                cookies.save('user', res.data.user);
-                cookies.save('username', res.data.user.username);
-                cookies.save('email', res.data.user.email);
                 cookies.save('token', res.data.token);
+                cookies.save('user_id', res.data.user.id);
+                cookies.save('username', res.data.user.username);
                 cookies.save('role', res.data.user.role);
+                window.location.href = '/posts'
             }
         } ).catch( (err) => {
             alert('Invalid Login');
