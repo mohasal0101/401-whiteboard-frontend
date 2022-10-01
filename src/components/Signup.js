@@ -21,7 +21,6 @@ function Signup () {
                     cookies.save( 'token', res.data.token );
                     cookies.save( 'user_id', res.data.user.id );
                     cookies.save( 'username', res.data.user.username );
-                    cookies.save( 'role', res.data.user.role );
                     window.location.href = '/posts';
                 }
             } ).catch( ( err ) => {

@@ -68,9 +68,9 @@ function Post ( props ) {
                             
                             <h1 className="card-title">{post.title}</h1>
                             <p className="card-text">{post.content}</p>
-                            {cookies.load('role') === 'admin' && <button onClick={() => {
+                            <button onClick={() => {
                                 handleDelete( post.id );
-                            }}>delete data</button>}
+                            }}>delete data</button>
                             
                            
                     </div>
