@@ -1,9 +1,5 @@
 import axios from "axios";
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import "../App.css";
-import cookies from 'react-cookies';
+import cookies from "react-cookies";
 
 function Signup () {
     const handleSubmit = async ( e ) => {
@@ -35,40 +31,46 @@ function Signup () {
         };
     };
     return (
-        <Container>
+
         <div className="container">
-        <Form onSubmit={handleSubmit}>
+        <div className="signup">
+            <h1 className="form-header2">Sign up</h1>
+            <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                <h1 className="form-header">Sign in form</h1>
                     <label htmlFor="username">Username</label>
-                    <input type="text" className="form-control" id="username" name="username" />
+                    <input type="text" name="username" id="username" />
                 </div>
-                
                 <div className="form-group">
                     <label htmlFor="password">Password</label>
-                    <input type="password" className="form-control" id="password" name="password" />
+                    <input type="text" name="password" id="password" />
                 </div>
                 <div className="form-group">
                     <label htmlFor="confirmPassword">Confirm Password</label>
-                    <input type="password" className="form-control" id="confirmPassword" name="confirmPassword" />
+                    <input type="text" name="confirmPassword" id="confirmPassword" />
                 </div>
-
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
-                    <input type="email" className="form-control" id="email" name="email" />
+                    <input type="email" name="email" id="email" />
                 </div>
-
-                <div className="Role">
+                <div className="form-group">
                     <label htmlFor="role">Role</label>
-                    <input  type="checkbox" checked="checked" name="role" value="user"/> User 
-                    <input  type="checkbox"  name="role" value="user"/> Admin 
-                 </div>
-                
-                <Button type="submit" className="btn btn-primary">Submit</Button>
-                </Form>
+                    <label class="form-control">
+                    <input type="checkbox" name="checkbox" />
+                    User
+                    </label>
+                    <label class="form-control">
+                    <input type="checkbox" name="checkbox" />
+                    Admin
+                    </label>
+                    
+                </div>
+                <div className="form-group">
+                    <input type="submit" />
+                </div>
+            </form>
+            <p>You already have an account? <a href="/signin" className="href">Sign in now</a></p>
         </div>
-        </Container>
-        
+        </div>
     );
 }
 
