@@ -53,7 +53,9 @@ function Signin() {
                 </div>
                 
                 <p>Don't have an account? <a href="/signup" className="href">Sign up now</a></p>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <div className="form-button">
+                <button type="submit">Submit</button>
+                </div>
             </form>
                 
             </div>
