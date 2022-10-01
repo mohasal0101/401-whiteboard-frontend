@@ -1,5 +1,6 @@
 *{
   background-color: #433388;
+ 
 }
 
 .App {
@@ -94,6 +95,14 @@
   border: 2px solid #4c4f56;
   border-radius: 3px;
 }
+.cool{
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
+  border-radius: 10px;
+}
+
 
 .form-style1:hover {
   background-color: #000000;
@@ -107,7 +116,7 @@
 }
 
 .input{
-  width: 300px;
+  width: 600px;
   height: 30px;
   border-radius: 3px;
   border: 2px solid #c2c6ce;
@@ -123,8 +132,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 20px;
-  margin-bottom: 10%;
+  margin-bottom:70px;
 }
 
 .form-group
@@ -206,6 +214,16 @@ body {
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
+}
+
+.form-header2{
+  font-size: 70px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #553c9a, #b393d3);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  margin-left: 60px;
 }
 
 .wave {

@@ -41,7 +41,7 @@ function Signin() {
             <div class="ocean">
             <div class="wave"></div>
             </div>
-            <form onSubmit={handleSubmit}>
+            <form className="cool" onSubmit={handleSubmit}>
                 <div className="form-group">
                     <h1 className="form-header">Sign in form</h1>
                     <label htmlFor="username">Username</label>
