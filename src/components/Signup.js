@@ -12,6 +12,7 @@ function Signup () {
                 'username': e.target.username.value,
                 'password': e.target.password.value,
                 'email': e.target.email.value,
+                'role': e.target.role.value
             };
             await axios.post(
                 `https://whiteboarding-backend-401.herokuapp.com/signup`,
@@ -21,6 +22,7 @@ function Signup () {
                     cookies.save( 'token', res.data.token );
                     cookies.save( 'user_id', res.data.user.id );
                     cookies.save( 'username', res.data.user.username );
+                    cookies.save( 'role', res.data.user.role );
                     window.location.href = '/posts';
                 }
             } ).catch( ( err ) => {
@@ -31,7 +33,7 @@ function Signup () {
     return (
         <div className="container">
         <div className="signup">
-            <h1 className="form-header2">Sign up</h1>
+            <h1 className="form-header">Sign up</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
@@ -51,28 +53,19 @@ function Signup () {
                 </div>
                 <div className="form-group">
                     <label htmlFor="role">Role</label>
-                    <label class="form-control">
-                    <input type="checkbox" name="checkbox" />
-                    User
-                    </label>
-                    <label class="form-control2">
-                    <input type="checkbox" name="checkbox" />
-                    Admin
-                    </label>
-                    
+                    <select name="role">
+                        <option value="user" selected>USER</option>
+                        <option value="admin">ADMIN</option>
+                    </select>
                 </div>
-                <div className="form-group">
-                    <input type="submit" />
+                <div className="form-button2">
+                <button type="submit">Submit</button>
                 </div>
-            </form>
-            <p>You already have an account? <a href="/signin" className="href">Sign in now</a></p>
+                <p>Don't have an account? <a href="/signup" className="href">Sign up now</a></p>
+                </form>
         </div>
         </div>
     );
 }
 
 export default Signup;
-
-
-
-
