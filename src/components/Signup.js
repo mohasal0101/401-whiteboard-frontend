@@ -12,7 +12,6 @@ function Signup () {
                 'username': e.target.username.value,
                 'password': e.target.password.value,
                 'email': e.target.email.value,
-                'role': e.target.role.value
             };
             await axios.post(
                 `https://whiteboarding-backend-401.herokuapp.com/signup`,
@@ -31,7 +30,6 @@ function Signup () {
         };
     };
     return (
-
         <div className="container">
         <div className="signup">
             <h1 className="form-header2">Sign up</h1>
@@ -58,7 +56,7 @@ function Signup () {
                     <input type="checkbox" name="checkbox" />
                     User
                     </label>
-                    <label class="form-control">
+                    <label class="form-control2">
                     <input type="checkbox" name="checkbox" />
                     Admin
                     </label>
@@ -75,3 +73,7 @@ function Signup () {
 }
 
 export default Signup;
+
+
+
+
