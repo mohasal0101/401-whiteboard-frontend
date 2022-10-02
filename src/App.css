@@ -96,6 +96,20 @@
   border-radius: 3px;
 }
 
+.left{
+  float:left;
+}
+
+.right{
+  float:right;
+}
+
+.form-group-role{
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: 179px;
+}
 
 
 .form-style1:hover {
@@ -191,7 +205,9 @@
   color: rgb(255, 255, 255); 
   border: 2px solid #2d2d2d;
   border-radius: 3px;
-margin-left: 53px;}
+  margin-left: 143px;
+  margin-top: 113px;
+}
 
 .form-button2:hover {
   background-color: #d285da;
@@ -289,6 +305,19 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+footer{
+  position: fixed;
+  background-color: #53429f;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  text-align: center;
+
+
+
 }
 
 
