@@ -95,13 +95,7 @@
   border: 2px solid #4c4f56;
   border-radius: 3px;
 }
-.cool{
-  border: 10px solid;
-  border-image-slice: 1;
-  border-width: 5px;
-  border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
-  border-radius: 10px;
-}
+
 
 
 .form-style1:hover {
