@@ -1,5 +1,7 @@
 import axios from "axios";
 import cookies from "react-cookies";
+import Footer from "./Footer";
+
 
 function Signup () {
     const handleSubmit = async ( e ) => {
@@ -35,24 +37,28 @@ function Signup () {
         <div className="signup">
             <h1 className="form-header">Sign up</h1>
             <form onSubmit={handleSubmit}>
+                <div className="left">
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input type="text" name="username" id="username" />
-                </div>
-                <div className="form-group">
+                
+                
+
                     <label htmlFor="password">Password</label>
                     <input type="text" name="password" id="password" />
                 </div>
+                </div>
+
+                <div className="right">
                 <div className="form-group">
                     <label htmlFor="confirmPassword">Confirm Password</label>
                     <input type="text" name="confirmPassword" id="confirmPassword" />
-                </div>
-                <div className="form-group">
+                
                     <label htmlFor="email">Email</label>
                     <input type="email" name="email" id="email" />
                 </div>
-                <div className="form-group">
-                    <label htmlFor="role">Role</label>
+                </div>
+                <div className="form-group-role">
                     <select name="role">
                         <option value="user" selected>USER</option>
                         <option value="admin">ADMIN</option>
@@ -61,10 +67,12 @@ function Signup () {
                 <div className="form-button2">
                 <button type="submit">Submit</button>
                 </div>
-                <p>Don't have an account? <a href="/signup" className="href">Sign up now</a></p>
+                <p>Already have an account? <a href="/signin" className="href">Sign in now</a></p>
                 </form>
         </div>
+<Footer/>
         </div>
+        
     );
 }
 
