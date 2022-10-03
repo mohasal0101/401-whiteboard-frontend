@@ -17,7 +17,7 @@ function Signup () {
                 'role': e.target.role.value
             };
             await axios.post(
-                `https://whiteboarding-backend-401.herokuapp.com/signup`,
+                `${process.env.HEROKU_URL}/signup`,
                 user
             ).then( ( res ) => {
                 if ( res.status === 200 ) {

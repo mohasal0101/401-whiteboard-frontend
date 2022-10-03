@@ -11,7 +11,7 @@ import cookies from 'react-cookies';
 function Post ( props ) {
     const [ post, setPost ] = useState( [] );
     const getData = async () => {
-        await axios.get( `https://whiteboarding-backend-401.herokuapp.com/post`, {
+        await axios.get( `${process.env.HEROKU_URL}/post`, {
             headers: {
                 Authorization: `Bearer ${cookies.load('token')}`
             }
@@ -29,7 +29,7 @@ function Post ( props ) {
     const handleDelete = async ( id ) => {
         let confirm = prompt("Please type DELETE");
         if(confirm === "DELETE"){
-            await axios.delete( `https://whiteboarding-backend-401.herokuapp.com/post/${id}` , {
+            await axios.delete( `${process.env.HEROKU_URL}/post/${id}` , {
                 headers: {
                     'Authorization': `Bearer ${cookies.load('token')}`
                 }
@@ -40,7 +40,7 @@ function Post ( props ) {
     const handleUpdate = async ( id ) => {
         let confirm = prompt("Please type UPDATE");
         if(confirm === "UPDATE"){
-            await axios.put( `https://whiteboarding-backend-401.herokuapp.com/post/${id}` , {
+            await axios.put( `${process.env.HEROKU_URL}/post/${id}` , {
                 headers: {
                     'Authorization': `Bearer ${cookies.load('token')}`
                 }

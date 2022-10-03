@@ -14,7 +14,7 @@ function addPostForm ( props ) {
             'userID': cookies.load( 'user_id' ),
         };
         await axios.post(
-            `https://whiteboarding-backend-401.herokuapp.com/post`,
+            `${process.env.HEROKU_URL}/post`,
             post, {
                 headers: {
                     'Authorization': `bearer ${cookies.load('token')}`
