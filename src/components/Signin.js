@@ -52,9 +52,9 @@ function Signin() {
                 </div>
                 
                 <p>Don't have an account? <a href="/signup" className="href">Sign up now</a></p>
-                <div className="form-button">
-                <button type="submit">Submit</button>
-                </div>
+                
+                    <button className="form-button">Submit</button>
+               
             </form>
                 
             </div>
