@@ -1,73 +1,79 @@
-import { createContext, useContext, useState } from 'react';
-import axios from 'axios';
-import base64 from 'base-64';
-import cookie from 'react-cookies';
-
-const LoginContext = createContext();
-
-export const useLoginContext = () => useContext(LoginContext);
-
-const LoginProvider = props => {
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [user, setUser] = useState({});
-    const [token, setToken] = useState('');
-    const [error, setError] = useState(null);
-    
-
-    const login = async (username, password) => {
-        const encoded = base64.encode(`${username}:${password}`);
-        await axios.post(
-            `https://whiteboarding-backend-401.herokuapp.com/signin`,
-            {},
-            {
-                headers: {
-                    'Authorization': `Basic ${encoded}`
-                }
-            }
-        ).then ( (res) => {
-            if (res.status === 200) {
-                cookie.save('token', res.data.token);
-                cookie.save('user_id', res.data.user.id);
-                cookie.save('username', res.data.user.username);
-                setToken(res.data.token);
-                setUser(res.data.user);
-                setLoggedIn(true);
-            }
-        } ).catch( (err) => {
-            setError(err);
-        }
-        );
-    };
-
-    const logout = () => {
-        cookie.remove('token');
-        cookie.remove('user_id');
-        cookie.remove('username');
-        setToken('');
-        setUser({});
-        setLoggedIn(false);
-    };
+import { createContext, useContext } from "react";
 
 
-    const can = (capability) => {
-        return user?.capabilities?.includes(capability);
-    };
+import axios from "axios";
+import base64 from "base-64";
+import cookies from "react-cookies";
 
-    const state = {
-        loggedIn,
-        user,
-        token,
-        error,
-        login,
-        logout,
-        can
-    };
+const doContext = createContext();
 
-    return (
-        <LoginContext.Provider value={state}>
-            {props.children}
-        </LoginContext.Provider>
-    );
+const SigninProvider = ( props ) => {
+
+    var user = {
+        username: cookies.load( "username" ),
+        user_id: cookies.load ("user_id"),
+        role: cookies.load ("role")
 }
 
-export default LoginProvider;
+const clearUser = () => {
+    cookies.remove( "username" );
+    cookies.remove( "user_id" );
+    cookies.remove( "role" );
+}
+
+const handleSignUp = async ( e ) => {
+    e.preventDefault();
+    const data = {
+        userName: e.target.username.value,
+        email: e.target.email.value,
+        password: e.target.password.value
+    };
+
+    await axios.post( `${process.env.REACT_APP_HEROKU_URL}/signup`, data ).then( res => {
+        console.log( res );
+    } ).catch( e => console.log( e ) )
+}
+
+
+
+const handleSignIn = async ( e ) => {
+    e.preventDefault();
+    const userInput = {
+        'username': e.target.username.value,
+        'password': e.target.password.value,
+    };
+    const encoded = base64.encode( `${userInput.username}:${userInput.password}` );
+    await axios.post(
+        `${process.env.REACT_APP_HEROKU_URL}/signin`,
+        {},
+        {
+            headers: {
+                'Authorization': `Basic ${encoded}`
+            }
+        }
+    ).then( ( res ) => {
+        if ( res.status === 200 ) {
+            cookies.save( 'token', res.data.token );
+            cookies.save( 'username', res.data.user.username );
+            cookies.save( 'user_id', res.data.user.id );
+            cookies.save( 'role', res.data.user.role );
+            window.location.href = "/posts";
+        }
+    } ).catch( ( err ) => {
+        alert( 'Invalid Login' );
+    }
+    );
+};
+
+
+
+const value = { user, handleSignIn, clearUser, handleSignUp };
+
+return (
+    <doContext.Provider value={ value }>
+        { props.children }
+    </doContext.Provider>
+)
+}
+
+export default SigninProvider;

@@ -1,47 +1,19 @@
-import axios from "axios";
-import cookies from "react-cookies";
+/* import axios from "axios";
+import cookies from "react-cookies"; */
 import Footer from "./Footer";
-import { useLoginContext } from "../Context/LoginContext";
+import React, { useContext } from 'react'
+import { authContext } from '../Context/AuthContext';
+
 
 
 function Signup () {
-    const context = useLoginContext();
-    const handleSubmit = async ( e ) => {
-        e.preventDefault();
-        if ( e.target.password.value !== e.target.confirmPassword.value ) {
-            alert( 'Passwords do not match' );
-            return;
-        } else {
-            const user = {
-                'username': e.target.username.value,
-                'password': e.target.password.value,
-                'email': e.target.email.value,
-                'role': e.target.role.value
-            };
-            await axios.post(
-                `${process.env.REACT_APP_HEROKU_URL}/signup`,
-                user
-            ).then( ( res ) => {
-                if ( res.status === 200 ) {
-                    cookies.save( 'token', res.data.token );
-                    cookies.save( 'user_id', res.data.user.id );
-                    cookies.save( 'username', res.data.user.username );
-                    cookies.save( 'role', res.data.user.role );
-                   /*  context.login( res.data.user );
-                    context.setLogin( true ); */
-                    
-                    window.location.href = '/posts';
-                }
-            } ).catch( ( err ) => {
-                alert( 'Username or email already exists' );
-            } );
-        };
-    };
+    
+        const{ handleSignUp } = useContext(authContext);
     return (
         <div className="container">
         <div className="signup">
             <h1 className="form-header">Sign up</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={ handleSignUp }>
                 <div className="left">
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
@@ -65,8 +37,8 @@ function Signup () {
                 </div>
                 <div className="form-group-role">
                     <select name="role">
-                        <option value="user" selected>USER</option>
-                        <option value="admin">ADMIN</option>
+                        <option value="user" >USER</option>
+                        <option value="admin" >ADMIN</option>
                     </select>
                 </div>
                 <div className="form-button2">

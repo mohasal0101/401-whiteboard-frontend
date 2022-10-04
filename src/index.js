@@ -5,9 +5,12 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
+import AuthContextProvider from './Context/AuthContext';
+
 
 const root = ReactDOM.createRoot( document.getElementById( 'root' ) );
 root.render(
+  <AuthContextProvider>
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Signin />} />
@@ -15,8 +18,9 @@ root.render(
       <Route path='/signup' element={<Signup />} />
       {localStorage.getItem('token') ? <Route  path='/posts' element={<App />} /> : <Route  path='/posts' element={<Signin />} />}
     </Routes>
-    
   </BrowserRouter>
+  </AuthContextProvider>
+
 );
 
 // If you want to start measuring performance in your app, pass a function
