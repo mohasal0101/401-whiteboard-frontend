@@ -14,7 +14,7 @@ function Signin() {
         };
         const encoded = base64.encode(`${user.username}:${user.password}`);
         await axios.post(
-            `${process.env.HEROKU_URL}/signin`,
+            `${process.env.REACT_APP_HEROKU_URL}/signin`,
             {},
             {
                 headers: {
