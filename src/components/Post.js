@@ -4,7 +4,7 @@ import { useState } from "react";
 import AddCommentForm from "./Add-comment-form";
 import React from 'react';
 import cookies from 'react-cookies';
-
+import '../Post.css';
 
 
 
@@ -57,7 +57,7 @@ function Post ( props ) {
             {post && post.map( ( post, idx ) => {
                 return (
                     <div>
-
+                        
                         <button  onClick={() => {
                                 handleUpdate( post.id );
                             }}>update data</button>
