@@ -2,10 +2,13 @@ import axios from "axios";
 import base64 from "base-64";
 import cookies from 'react-cookies';
 import "../App.css";
+import { useLoginContext } from '../Context/LoginContext';
+
 
 
 
 function Signin() {
+    const context = useLoginContext();
     const handleSubmit = async (e) => {
         e.preventDefault();
         const user = {
@@ -26,6 +29,8 @@ function Signin() {
                 cookies.save('token', res.data.token);
                 cookies.save('user_id', res.data.user.id);
                 cookies.save('username', res.data.user.username);
+               /*  context.setLogin(true);
+                context.setUser(res.data.user); */
                 window.location.href = '/posts'
             }
         } ).catch( (err) => {
