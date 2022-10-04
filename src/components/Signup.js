@@ -1,9 +1,11 @@
 import axios from "axios";
 import cookies from "react-cookies";
 import Footer from "./Footer";
+import { useLoginContext } from "../Context/LoginContext";
 
 
 function Signup () {
+    const context = useLoginContext();
     const handleSubmit = async ( e ) => {
         e.preventDefault();
         if ( e.target.password.value !== e.target.confirmPassword.value ) {
@@ -25,6 +27,9 @@ function Signup () {
                     cookies.save( 'user_id', res.data.user.id );
                     cookies.save( 'username', res.data.user.username );
                     cookies.save( 'role', res.data.user.role );
+                   /*  context.login( res.data.user );
+                    context.setLogin( true ); */
+                    
                     window.location.href = '/posts';
                 }
             } ).catch( ( err ) => {
