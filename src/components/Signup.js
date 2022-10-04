@@ -17,7 +17,7 @@ function Signup () {
                 'role': e.target.role.value
             };
             await axios.post(
-                `${process.env.HEROKU_URL}/signup`,
+                `${process.env.REACT_APP_HEROKU_URL}/signup`,
                 user
             ).then( ( res ) => {
                 if ( res.status === 200 ) {
