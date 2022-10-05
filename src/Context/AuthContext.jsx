@@ -1,9 +1,12 @@
 import axios from "axios";
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 import base64 from 'base-64';
 import cookies from 'react-cookies';
 
 export const authContext = createContext();
+export const useAuth = () => useContext( authContext );
+
+
 
 const AuthContextProvider = (props) => {
 
@@ -82,7 +85,59 @@ const AuthContextProvider = (props) => {
     }
   }
 
-  const value = {isAuth, setisAuth, handleSignIn, handleSignUp, checkToken, role, user, capabilities};
+ 
+// canDo a function that check user if they can do (read, add , update , delete)
+
+const canDo = ( action ) => {
+  if ( user.role === "admin" ) {
+      return true;
+  } else {
+      return user.capabilities.includes( action );
+  }
+}
+
+// login
+
+const login = async ( username, password ) => {
+  const encoded = base64.encode( `${username}:${password}` );
+  const response = await axios.post(
+      `${process.env.REACT_APP_HEROKU_URL}/signin`,
+      {},
+      {
+          headers: {
+              'Authorization': `Basic ${encoded}`
+          }
+      }
+  );
+  validateLogin( response.data );
+  return response.data;
+}
+
+// validateLogin
+
+const validateLogin = ( data ) => {
+  cookies.save( 'token', data.token );
+  cookies.save( 'username', data.user.username );
+  cookies.save( 'user_id', data.user.id );
+  cookies.save( 'role', data.user.role );
+  cookies.save( 'capabilities', data.user.capabilities );
+  window.location.href = "/posts";
+}
+
+//logout
+
+const logout = () => {
+  cookies.remove( 'token' );
+  cookies.remove( 'username' );
+  cookies.remove( 'user_id' );
+  cookies.remove( 'role' );
+  cookies.remove( 'capabilities' );
+  window.location.href = "/";
+}
+
+
+
+  const value = {isAuth, setisAuth, handleSignIn, handleSignUp, checkToken, role, user, capabilities, canDo, login, logout};
 
   return (
     <authContext.Provider value={value}>

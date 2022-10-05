@@ -15,8 +15,11 @@ function addPostForm ( props ) {
         };
         await axios.post(
             `${process.env.REACT_APP_HEROKU_URL}/post`,
-            post, 
-            
+            post, {
+                headers: {
+                    'Authorization': `bearer ${cookies.load('token')}`
+                }
+            }
         ).then( () => {
             props.getData();
         } );
