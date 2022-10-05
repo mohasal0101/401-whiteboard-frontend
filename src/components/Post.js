@@ -4,7 +4,7 @@ import { useState } from "react";
 import AddCommentForm from "./Add-comment-form";
 import React from 'react';
 import cookies from 'react-cookies';
-import '../Post.css';
+
 
 
 
@@ -54,6 +54,7 @@ function Post ( props ) {
     }, [props.rerender] );
     return (
         <>
+
             {post && post.map( ( post, idx ) => {
                 return (
                     <div>
@@ -68,9 +69,7 @@ function Post ( props ) {
                             
                             <h1 className="card-title">{post.title}</h1>
                             <p className="card-text">{post.content}</p>
-                            <button onClick={() => {
-                                handleDelete( post.id );
-                            }}>delete data</button>
+                            
                             
                            
                     </div>

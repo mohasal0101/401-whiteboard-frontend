@@ -66,8 +66,31 @@ const handleSignIn = async ( e ) => {
 };
 
 
+const handleSubmit = async ( e ) => {
+    e.preventDefault();
+    
+    const post = {
+        'title': e.target.title.value,
+        'content': e.target.content.value,
+        'img': e.target.img.value,
+        'userID': cookies.load( 'user_id' ),
+    };
+    await axios.post(
+        `${process.env.REACT_APP_HEROKU_URL}/post`,
+        post, {
+            headers: {
+                'Authorization': `bearer ${cookies.load('token')}`
+            }
+        }
+    ).then( () => {
+        props.getData();
+    } );
+};
 
-const value = { user, handleSignIn, clearUser, handleSignUp };
+
+
+
+const value = { user, handleSignIn, clearUser, handleSignUp, handleSubmit };
 
 return (
     <doContext.Provider value={ value }>

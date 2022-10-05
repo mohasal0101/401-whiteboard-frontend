@@ -1,5 +1,8 @@
 *{
   background-color: #433388;
+  
+  box-sizing: border-box;
+  
  
 }
 
@@ -217,19 +220,9 @@ body, html {
   height: 100%;
 }
 
-* {
-  box-sizing: border-box;
-}
 
-.html,
-body {
-  height: 100%;
-}
 
-body {
-  background:#433388;
-  overflow: hidden;
-}
+
 
 .ocean {
   height: 5%;
