@@ -1,5 +1,5 @@
 *{
-  background-color: #433388;
+  background-color: #665e8a;
   
   box-sizing: border-box;
   
@@ -57,9 +57,17 @@
 
 }
 
-  img{
+.container-cards{
+display: flex;
+flex-wrap: wrap;
+border: rgb(255, 255, 255) solid 1px;
+width: 100%;
+}
+
+  /* img{
     margin-top: 6px;
-  }
+    border-radius: 10px;
+  } */
 
 .add-post-form{
   box-shadow:inset;
@@ -190,6 +198,7 @@
   margin-left: 150px;
 }
 
+
 .form-button:hover {
   background-color: #615692;
   color: #2d2d2d;
@@ -216,6 +225,28 @@
   background-color: #d285da;
   color: #2d2d2d;
 }
+
+.form-button3 {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  color: rgb(255, 255, 255); 
+  border: 2px solid #2d2d2d;
+  border-radius: 3px;
+}
+
+.form-button3:hover {
+  background-color: #d285da;
+  color: #2d2d2d;
+}
+
 body, html {
   height: 100%;
 }
@@ -236,7 +267,7 @@ body, html {
 .form-header{
   font-size: 70px;
   font-weight: 600;
-  background-image: linear-gradient(to left, #553c9a, #b393d3);
+  background-image: linear-gradient(to left, #FFFFFF, #665e8a);
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
@@ -302,7 +333,7 @@ body, html {
 
 footer{
   position: fixed;
-  background-color: #53429f;
+  background-color: #665e8a;
   bottom: 0;
   left: 0;
   right: 0;

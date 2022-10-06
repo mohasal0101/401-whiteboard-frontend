@@ -1,5 +1,7 @@
 import axios from "axios";
 import React from 'react';
+import '../App.css';
+import Button from 'react-bootstrap/Button';
 
 
 function AddCommentForm ( props ) {
@@ -9,7 +11,7 @@ function AddCommentForm ( props ) {
             'content': e.target.content.value,
         };
         await axios.post(
-            `https://whiteboarding-backend-401.herokuapp.com/comment/${props.postId}`,
+            `${process.env.REACT_APP_HEROKU_URL}/${props.postId}`,
             comment
         ).then( () => {
             props.getData();
@@ -23,9 +25,7 @@ function AddCommentForm ( props ) {
                     <div className="form-control2">
                         <textarea placeholder="Add Comment content" name="content"></textarea>
                     </div>
-                    <div className="button">
-                        <input type="submit" />
-                    </div>
+                    <Button variant="primary">Comment</Button>
                 </form>
             </div>
         </>

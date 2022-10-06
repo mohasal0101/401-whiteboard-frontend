@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import cookies from 'react-cookies';
+import '../App.css';
 
 
 function addPostForm ( props ) {
@@ -41,9 +42,8 @@ function addPostForm ( props ) {
                         <label>Add Image</label>
                         <input type='text' placeholder="Add image link address" name="img"></input>
                     </div>
-                    <div className="form-style1">
-                        <input type="submit"/>
-                        </div>
+                    <button  className="form-button3">Submit</button>
+
                     <div className="update-post-form">
                             <h2>Update Post</h2>
                             <button onSubmit={props.rerender}>

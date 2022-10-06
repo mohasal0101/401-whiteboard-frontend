@@ -4,6 +4,10 @@ import { useState } from "react";
 import AddCommentForm from "./Add-comment-form";
 import React from 'react';
 import cookies from 'react-cookies';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import '../App.css';
+
 
 
 
@@ -38,44 +42,34 @@ function Post ( props ) {
         } else handleDelete()
     };
     const handleUpdate = async ( id ) => {
-        let confirm = prompt("Please type UPDATE");
-        if(confirm === "UPDATE"){
+     
             await axios.put( `${process.env.REACT_APP_HEROKU_URL}/post/${id}` , {
                 headers: {
                     'Authorization': `Bearer ${cookies.load('token')}`
                 }
             } );
             getData();
-        } else handleUpdate()
+         handleUpdate() 
     };
 
     useEffect( () => {
         getData();
     }, [props.rerender] );
     return (
-        <>
-
+        <div className="container-cards">
             {post && post.map( ( post, idx ) => {
                 return (
-                    <div>
+                    <Card className="text-center" style={{width: '30%', margin: '10px'}}>
                         
-                        <button  onClick={() => {
-                                handleUpdate( post.id );
-                            }}>update data</button>
-                         <div className="post-class" style={{ justifyContent: 'center', margin: '1rem' }} key={idx}>
-                        <img src={post.img} alt={post.title} style={{ width: "15rem" }} />
+                        
+                        <img src={post.img} alt={post.title} style={{ width: "100%" }} />
                         
                         <div className="card-body">
-                            
-                            <h1 className="card-title">{post.title}</h1>
-                            <p className="card-text">{post.content}</p>
-                            
-                            
-                           
+                            <Card.Header className="card-title">{post.title}</Card.Header>
+                            <Card.Title className="card-text">{post.content}</Card.Title> 
                     </div>
-                   
-                        
-                        <div>
+                    
+                        <Card.Text>
                             {post.Comments &&
                                 <h2>Comments</h2>
                             }
@@ -89,20 +83,20 @@ function Post ( props ) {
                                 );
                             }
                             )}
-                              </div>
                               <AddCommentForm postId={post.id} getData={getData} />
+                              </Card.Text>
+
                             <div>
-                            <button  onClick={() => {
-                                handleDelete( post.id );
-                            }}>delete post</button>
+                            <Button  onClick={() => {handleDelete( post.id );}}variant="danger">delete post</Button>
+                            <button  type="button" className="btn btn-warning" onClick={() => {handleUpdate( post.id );}}>update data</button>
+                        
                         </div>
 
-                        </div>
-                    </div>
+                    </Card>
                 );
             }
             )}
-        </>
+        </div>
     );
 }
 export default Post;

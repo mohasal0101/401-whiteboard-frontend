@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
+import Tab2 from './components/tab2';
 import AuthContextProvider from './Context/AuthContext';
 
 
@@ -16,6 +17,7 @@ root.render(
       <Route path="/" element={<Signin />} />
       <Route path='/signin' element={<Signin />} />
       <Route path='/signup' element={<Signup />} />
+      <Route path='/tab2' element={<Tab2 />} />
       {localStorage.getItem('token') ? <Route  path='/posts' element={<App />} /> : <Route  path='/posts' element={<Signin />} />}
     </Routes>
   </BrowserRouter>

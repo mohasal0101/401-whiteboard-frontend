@@ -1,6 +1,6 @@
 /* import axios from "axios";
 import cookies from "react-cookies"; */
-import Footer from "./Footer";
+//import Footer from "./Footer";
 import React, { useContext } from 'react'
 import { authContext } from '../Context/AuthContext';
 
@@ -11,6 +11,9 @@ function Signup () {
         const{ handleSignUp } = useContext(authContext);
     return (
         <div className="container">
+            <div class="ocean">
+            <div class="wave"></div>
+            </div>
         <div className="signup">
             <h1 className="form-header">Sign up</h1>
             <form onSubmit={ handleSignUp }>
@@ -41,14 +44,13 @@ function Signup () {
                         <option value="admin" >ADMIN</option>
                     </select>
                 </div>
-                <div className="form-button2">
-                <button type="submit">Submit</button>
-                </div>
+                <button className="form-button">Submit</button>
+
                 <p>Already have an account? <a href="/signin" className="href">Sign in now</a></p>
                 </form>
         </div>
-<Footer/>
-        </div>
+{/* <Footer/>
+ */}        </div>
         
     );
 }
