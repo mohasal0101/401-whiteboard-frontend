@@ -4,7 +4,8 @@ import Post from "./components/Post";
 import AddPostForm from "./components/Add-post-form";
 import { useState} from "react";
 import React from 'react';
-
+/* import { Nav } from "react-bootstrap";
+ */
 function App() {
   const [rerender, setRerender] = useState(false);
   const handleRerender = () => {
@@ -12,7 +13,11 @@ function App() {
   };
   return (
    <>
-
+   {/*  <Nav className="justify-content-center" activeKey="/home">
+      <Nav.Item>
+        <Nav.Link href="/home">Active</Nav.Link>
+      </Nav.Item>
+      </Nav> */}
     <div className="App">
       
     <header class="header">
@@ -30,8 +35,8 @@ function App() {
     <div class="info__content__action"></div>
     <nav class="info__content__nav">
       <ul>
-        <li class="info__content__nav__item"><a href="tab1">React JS CONTENT 01</a></li>
-        <li class="info__content__nav__item"><a href="tab2">React JS CONTENT 02</a></li>
+        <li class="info__content__nav__item"><a href="/posts">React JS CONTENT 01</a></li>
+        <li class="info__content__nav__item"><a href="/tab2">React JS CONTENT 02</a></li>
         <li class="info__content__nav__item"><a href="tab3">React JS CONTENT 03</a></li>
        
       </ul>
