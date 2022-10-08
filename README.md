@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was deployed with [View React App](https://github.com/facebook/create-react-app).
+This project was deployed with [View React App](https://animated-moonbeam-36445b.netlify.app).
 
 ## Available Scripts
 
