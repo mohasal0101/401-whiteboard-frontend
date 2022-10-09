@@ -7,6 +7,7 @@ import cookies from 'react-cookies';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import '../App.css';
+import CarouselComponent from "./Carousel";
 
 
 
@@ -59,6 +60,7 @@ function Post ( props ) {
         <div className="container-cards">
             {post && post.map( ( post, idx ) => {
                 return (
+                    
                     <Card className="text-center" style={{width: '30%', margin: '10px'}}>
                         
                         

@@ -4,6 +4,7 @@ import Post from "./components/Post";
 import AddPostForm from "./components/Add-post-form";
 import { useState} from "react";
 import React from 'react';
+import Carousel from './components/Carousel';
 /* import { Nav } from "react-bootstrap";
  */
 function App() {
@@ -43,6 +44,7 @@ function App() {
     </nav>
   </div>
 </section>
+          <Carousel />
           <AddPostForm getData={handleRerender}/>
          <Post rerender={rerender} />
     </div>
