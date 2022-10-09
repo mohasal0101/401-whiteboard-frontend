@@ -36,7 +36,7 @@ const AuthContextProvider = (props) => {
               cookies.save( 'username', res.data.user.username );
               cookies.save( 'user_id', res.data.user.id );
               cookies.save( 'role', res.data.user.role );
-              window.location.href = "/posts";
+              window.location.href = "/post";
           }
       } ).catch( ( err ) => {
           alert( 'Username or email already exists' );
@@ -66,7 +66,7 @@ const AuthContextProvider = (props) => {
             cookies.save( 'username', res.data.user.username );
             cookies.save( 'user_id', res.data.user.id );
             cookies.save( 'role', res.data.user.role );
-            window.location.href = "/posts";
+            window.location.href = "/post";
         }
     } ).catch( ( err ) => {
         alert( 'Invalid Login' );
@@ -121,7 +121,7 @@ const validateLogin = ( data ) => {
   cookies.save( 'user_id', data.user.id );
   cookies.save( 'role', data.user.role );
   cookies.save( 'capabilities', data.user.capabilities );
-  window.location.href = "/posts";
+  window.location.href = "/post";
 }
 
 //logout

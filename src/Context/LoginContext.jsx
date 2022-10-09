@@ -57,7 +57,7 @@ const handleSignIn = async ( e ) => {
             cookies.save( 'username', res.data.user.username );
             cookies.save( 'user_id', res.data.user.id );
             cookies.save( 'role', res.data.user.role );
-            window.location.href = "/posts";
+            window.location.href = "/post";
         }
     } ).catch( ( err ) => {
         alert( 'Invalid Login' );
