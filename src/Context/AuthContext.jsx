@@ -132,7 +132,7 @@ const logout = () => {
   cookies.remove( 'user_id' );
   cookies.remove( 'role' );
   cookies.remove( 'capabilities' );
-  window.location.href = "/";
+  window.location.href = "/post";
 }
 
 

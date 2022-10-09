@@ -4,7 +4,7 @@ import '../App.css';
 import Button from 'react-bootstrap/Button';
 
 
-function AddCommentForm ( props ) {
+function AddCommentForm ( props, postId ) {
     const handleSubmit = async ( e ) => {
         e.preventDefault();
         const comment = {
