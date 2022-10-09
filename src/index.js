@@ -18,7 +18,7 @@ root.render(
       <Route path='/signin' element={<Signin />} />
       <Route path='/signup' element={<Signup />} />
       <Route path='/tab2' element={<Tab2 />} />
-      {localStorage.getItem('token') ? <Route  path='/post' element={<App />} /> : <Route  path='/post' element={<Signin />} />}
+      {localStorage.getItem('token') ? <Route  path='/posts' element={<App />} /> : <Route  path='/posts' element={<Signin />} />}
     </Routes>
   </BrowserRouter>
   </AuthContextProvider>
