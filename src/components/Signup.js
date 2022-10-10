@@ -7,8 +7,8 @@ import { authContext } from '../Context/AuthContext';
 
 
 function Signup () {
-    
-        const{ handleSignUp } = useContext(authContext);
+
+        const{ handleSignUp, setSignup } = useContext(authContext);
     return (
         <div className="container">
             <div class="ocean">
@@ -46,7 +46,7 @@ function Signup () {
                 </div>
                 <button className="form-button">Submit</button>
 
-                <p>Already have an account? <a href="/signin" className="href">Sign in now</a></p>
+                <p>Already have an account? <a href="/signin" onClick={ setSignup } className="href">Sign in now</a></p>
                 </form>
         </div>
 {/* <Footer/>

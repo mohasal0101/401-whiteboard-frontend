@@ -2,7 +2,7 @@ import axios from "axios";
 import { createContext, useState, useContext } from "react";
 import base64 from 'base-64';
 import cookies from 'react-cookies';
-
+import {  toast } from 'react-toastify';
 export const authContext = createContext();
 export const useAuth = () => useContext( authContext );
 
@@ -36,7 +36,7 @@ const AuthContextProvider = (props) => {
               cookies.save( 'username', res.data.user.username );
               cookies.save( 'user_id', res.data.user.id );
               cookies.save( 'role', res.data.user.role );
-              window.location.href = "/post";
+              window.location.href = "/posts";
           }
       } ).catch( ( err ) => {
           alert( 'Username or email already exists' );
@@ -58,18 +58,32 @@ const AuthContextProvider = (props) => {
             headers: {
                 'Authorization': `Basic ${encoded}`
             }
+            
         }
+        
     ).then( ( res ) => {
+    
         if ( res.status === 200 ) {
+          
             setUser(res.data.user);
             cookies.save( 'token', res.data.token );
             cookies.save( 'username', res.data.user.username );
             cookies.save( 'user_id', res.data.user.id );
             cookies.save( 'role', res.data.user.role );
-            window.location.href = "/post";
+            window.location.href = "/posts";
         }
+        
     } ).catch( ( err ) => {
-        alert( 'Invalid Login' );
+      toast.error(' Invalid Login ', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+        
     }
     );
   }
@@ -121,7 +135,7 @@ const validateLogin = ( data ) => {
   cookies.save( 'user_id', data.user.id );
   cookies.save( 'role', data.user.role );
   cookies.save( 'capabilities', data.user.capabilities );
-  window.location.href = "/post";
+  window.location.href = "/posts";
 }
 
 //logout
@@ -132,7 +146,7 @@ const logout = () => {
   cookies.remove( 'user_id' );
   cookies.remove( 'role' );
   cookies.remove( 'capabilities' );
-  window.location.href = "/post";
+  window.location.href = "/posts";
 }
 
 
