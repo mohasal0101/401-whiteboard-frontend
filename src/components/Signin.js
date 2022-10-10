@@ -2,12 +2,14 @@
 import React, { useContext } from 'react'
 import { authContext } from '../Context/AuthContext';
 import "../App.css";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
 function Signin() {
 
-
+    const { notify } = useContext(authContext);
     const { handleSignIn } = useContext(authContext);
     return ( 
 
@@ -28,8 +30,10 @@ function Signin() {
                 
                 <p>Don't have an account? <a href="/signup" className="href">Sign up now</a></p>
                 
-                    <button className="form-button">Submit</button>
-               
+                <div>
+                <button className='form-button' onClick={notify}>Submit!</button>
+                <ToastContainer />
+                </div>               
             </form>
                 
             </div>

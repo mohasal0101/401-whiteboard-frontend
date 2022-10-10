@@ -7,6 +7,7 @@ import Signup from './components/Signup';
 import Signin from './components/Signin';
 import Tab2 from './components/tab2';
 import AuthContextProvider from './Context/AuthContext';
+import './App.css';
 
 
 const root = ReactDOM.createRoot( document.getElementById( 'root' ) );
