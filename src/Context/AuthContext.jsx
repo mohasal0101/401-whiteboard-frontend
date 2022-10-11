@@ -82,6 +82,12 @@ const AuthContextProvider = (props) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
+        // font color
+        style: {
+          color: "#000000",
+          fontSize: "20px",
+          fontWeight: "bold",
+        },
         });
         
     }

@@ -6,6 +6,17 @@
  
 }
 
+.carousel{
+  padding: 10px 100px 100px;
+  height: 100vh;
+  width: 100vw;
+  background-color: #665e8a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .App {
   text-align: center;
 
