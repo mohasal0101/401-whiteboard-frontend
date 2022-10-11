@@ -55,13 +55,13 @@ function Post ( props ) {
 
     useEffect( () => {
         getData();
-    }, [props.rerender] );
+    }, [] );
     return (
         <div className="container-cards">
-            {post && post.map( ( post, idx ) => {
+            {post ? post.map( ( post, idx ) => {
                 return (
                     
-                    <Card className="text-center" style={{width: '30%', margin: '10px'}}>
+                    <Card className="text-center" style={{width: '30%', margin: '10px'}} key={idx}>
                         
                         
                         <img src={post.img} alt={post.title} style={{ width: "100%" }} />
@@ -72,14 +72,14 @@ function Post ( props ) {
                     </div>
                     
                         <Card.Text>
-                            {post.Comments &&
+                            {!post.Comments &&
                                 <h2>Comments</h2>
                             }
                             {post.Comments && post.Comments.map( ( comment, idx ) => {
                                 return (
                                     <div className="card" style={{ justifyContent: 'center', margin: '1rem' }} key={idx}>
                                         <div className="card-body">
-                                            <p className="card-text">{comment.content}</p>
+                                            <p className="card-text">{comment.content} key={idx}</p>
                                         </div>
                                     </div>
                                 );
@@ -97,7 +97,8 @@ function Post ( props ) {
                     </Card>
                 );
             }
-            )}
+            ) : <h4>hello</h4>
+        }
         </div>
     );
 }
