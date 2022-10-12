@@ -2,23 +2,33 @@ import "./App.css";
 import "./App.scss";
 import Post from "./components/Post";
 import AddPostForm from "./components/Add-post-form";
-import { useState} from "react";
+import { useContext, useEffect, useState} from "react";
 import React from 'react';
 import Carousel from './components/Carousel';
+import { authContext } from "./Context/AuthContext";
+import { Else, If, Then, When } from "react-if";
+import Signup from "./components/Signup";
+import Signin from "./components/Signin";
 /* import { Nav } from "react-bootstrap";
  */
 function App() {
-  const [rerender, setRerender] = useState(false);
+ /*  const [rerender, setRerender] = useState(false);
   const handleRerender = () => {
     setRerender(!rerender);
-  };
+  }; */
+
+  
+
+  const { signup,user } = useContext(authContext);
+
+
+  useEffect (() => {
+   // checkToken()
+  }, [])
+
   return (
    <>
-   {/*  <Nav className="justify-content-center" activeKey="/home">
-      <Nav.Item>
-        <Nav.Link href="/home">Active</Nav.Link>
-      </Nav.Item>
-      </Nav> */}
+  
     <div className="App">
       
     <header class="header">
@@ -43,10 +53,10 @@ function App() {
       </ul>
     </nav>
   </div>
-</section>
+  </section>
           <Carousel />
-          <AddPostForm getData={handleRerender}/>
-         <Post rerender={rerender} />
+          <AddPostForm getData={user.isAuth}/>
+         <Post  />
     </div>
     </>
   );

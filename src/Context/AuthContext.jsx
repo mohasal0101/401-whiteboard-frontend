@@ -3,6 +3,10 @@ import { createContext, useState, useContext } from "react";
 import base64 from 'base-64';
 import cookies from 'react-cookies';
 import {  toast } from 'react-toastify';
+import { login } from "../actions/authActions";
+import { initialState}  from '../reducers/authReducer';
+import { AuthReducer } from '../reducers/authReducer';
+import { useReducer } from "react";
 export const authContext = createContext();
 export const useAuth = () => useContext( authContext );
 
@@ -10,10 +14,14 @@ export const useAuth = () => useContext( authContext );
 
 const AuthContextProvider = (props) => {
 
-  const [isAuth, setisAuth] = useState(false);
+  /* const [isAuth, setisAuth] = useState(false);
   const [role, setRole] = useState('');
-  const [user, setUser] = useState({});
-  const [capabilities, setCapabilities] = useState();
+  const [ signup , setSignup ] = useState( false );
+  const [capabilities, setCapabilities] = useState(); */
+
+  //const [user, setUser] = useState({});
+  const [user, dispatch] = useReducer(AuthReducer, initialState);
+
 
   const handleSignUp = async ( e ) => {
     e.preventDefault();
@@ -44,65 +52,19 @@ const AuthContextProvider = (props) => {
   };
 };
 
-  const handleSignIn = async ( e ) => {
-    e.preventDefault();
-    const userInput = {
-        'username': e.target.username.value,
-        'password': e.target.password.value,
-    };
-    const encoded = base64.encode( `${userInput.username}:${userInput.password}` );
-    await axios.post(
-        `${process.env.REACT_APP_HEROKU_URL}/signin`,
-        {},
-        {
-            headers: {
-                'Authorization': `Basic ${encoded}`
-            }
-            
-        }
-        
-    ).then( ( res ) => {
-    
-        if ( res.status === 200 ) {
-          
-            setUser(res.data.user);
-            cookies.save( 'token', res.data.token );
-            cookies.save( 'username', res.data.user.username );
-            cookies.save( 'user_id', res.data.user.id );
-            cookies.save( 'role', res.data.user.role );
-            window.location.href = "/posts";
-        }
-        
-    } ).catch( ( err ) => {
-      toast.error(' Invalid Login ', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        // font color
-        style: {
-          color: "#000000",
-          fontSize: "20px",
-          fontWeight: "bold",
-        },
-        });
-        
-    }
-    );
-  }
+ /*  const handleSignIn = async ( e ) => {
+   
+  } */
 
 
   const checkToken = () => {
-    const token = cookies.load('token');
+   /*  const token = cookies.load('token');
     const role = cookies.load('role');
     if (token) {
       setisAuth(true)
       setRole(role)
       setCapabilities(cookies.load('capabilities'))
-    }
+    } */
   }
 
  
@@ -118,22 +80,20 @@ const canDo = ( action ) => {
 
 // login
 
-const login = async ( username, password ) => {
-  const encoded = base64.encode( `${username}:${password}` );
-  const response = await axios.post(
-      `${process.env.REACT_APP_HEROKU_URL}/signin`,
-      {},
-      {
-          headers: {
-              'Authorization': `Basic ${encoded}`
-          }
-      }
-  );
-  validateLogin( response.data );
-  return response.data;
+const handleLogin = ( e ) => {
+  e.preventDefault();
+  const userInput = {
+      'username': e.target.username.value,
+      'password': e.target.password.value,
+  };
+  const encoded = base64.encode( `${userInput.username}:${userInput.password}` );
+  login(dispatch, encoded);
+  console.log(user);
 }
 
-// validateLogin
+
+
+/* validateLogin
 
 const validateLogin = ( data ) => {
   cookies.save( 'token', data.token );
@@ -142,11 +102,11 @@ const validateLogin = ( data ) => {
   cookies.save( 'role', data.user.role );
   cookies.save( 'capabilities', data.user.capabilities );
   window.location.href = "/posts";
-}
+} */
 
 //logout
 
-const logout = () => {
+/* const logout = () => {
   cookies.remove( 'token' );
   cookies.remove( 'username' );
   cookies.remove( 'user_id' );
@@ -154,10 +114,10 @@ const logout = () => {
   cookies.remove( 'capabilities' );
   window.location.href = "/posts";
 }
+ */
 
 
-
-  const value = {isAuth, setisAuth, handleSignIn, handleSignUp, checkToken, role, user, capabilities, canDo, login, logout};
+  const value = {  handleSignUp, checkToken,  user,  canDo, handleLogin, };
 
   return (
     <authContext.Provider value={value}>

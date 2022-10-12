@@ -10,14 +10,14 @@ import 'react-toastify/dist/ReactToastify.css';
 function Signin() {
 
     const { notify } = useContext(authContext);
-    const { handleSignIn } = useContext(authContext);
+    const { handleLogin } = useContext(authContext);
     return ( 
 
         <div className="container">
             <div class="ocean">
             <div class="wave"></div>
             </div>
-            <form className="cool" onSubmit={ handleSignIn }>
+            <form className="cool" onSubmit={ handleLogin }>
                 <div className="form-group">
                     <h1 className="form-header">Sign in form</h1>
                     <label htmlFor="username">Username</label>
@@ -41,5 +41,6 @@ function Signin() {
     );
 
 }
+
 
 export default Signin;
