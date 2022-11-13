@@ -30,44 +30,40 @@ const clearUser = () => {
 
 const handleSignUp = async ( e ) => {
     e.preventDefault();
-        if ( e.target.password.value !== e.target.confirmPassword.value ) {
-            const notify = () => toast("Passwords do not match");
-
-            notify();            return;
-        } else {
-            const userObject = {
-                'username': e.target.username.value,
-                'password': e.target.password.value,
-                'email': e.target.email.value,
-                'role': e.target.role.value
-            };
-            await axios.post(
-                `${process.env.REACT_APP_HEROKU_URL}/signup`,
-                userObject
-            ).then( ( res ) => {
-                if ( res.status === 200 ) {
-                    cookies.save( 'token', res.data.token );
-                    cookies.save( 'username', res.data.user.username );
-                    cookies.save( 'user_id', res.data.user.id );
-                    cookies.save( 'role', res.data.user.role );
-                    setIsAuth( true );
-                }
-            } ).catch( ( err ) => {
-                const notify = () => toast("Username or email already exists");
-
-                notify();
-            } );
+    if ( e.target.password.value !== e.target.confirmPassword.value ) {
+        prompt( 'Passwords do not match' );
+        return;
+    } else {
+        const userObject = {
+            'username': e.target.username.value,
+            'password': e.target.password.value,
+            'email': e.target.email.value,
+            'role': e.target.role.value
         };
-}
+        await axios.post(
+            `${process.env.REACT_APP_HEROKU_URL}/signup`,
+            userObject
+        ).then( ( res ) => {
+            if ( res.status === 200 ) {
+                cookies.save( 'token', res.data.token );
+                cookies.save( 'username', res.data.user.username );
+                cookies.save( 'user_id', res.data.user.id );
+                cookies.save( 'role', res.data.user.role );
+                setIsAuth( true );
+            }
+        } ).catch( ( err ) => {
+            prompt( 'Username or email already exists' );
+        } );
+    };
+};
 
 
 
 const handleSignIn = async ( e ) => {
     e.preventDefault();
-
     const userInput = {
         'username': e.target.username.value,
-        'password': e.target.password.value,
+        'password': e.target.password.value
     };
     const encoded = base64.encode( `${userInput.username}:${userInput.password}` );
     await axios.post(
@@ -80,6 +76,7 @@ const handleSignIn = async ( e ) => {
         }
     ).then( ( res ) => {
         if ( res.status === 200 ) {
+            setIsAuth( false );
             cookies.save( 'token', res.data.token );
             cookies.save( 'username', res.data.user.username );
             cookies.save( 'user_id', res.data.user.id );
@@ -87,9 +84,7 @@ const handleSignIn = async ( e ) => {
             setIsAuth( true );
         }
     } ).catch( ( err ) => {
-        const notify = () => toast("Invalid Login");
-
-        notify();
+        prompt( 'Invalid Login' );
     }
     );
 };

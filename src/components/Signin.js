@@ -4,6 +4,7 @@ import { authContext } from '../Context/AuthContext';
 import "../App.css";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FormControl, FormLabel, Button } from "@chakra-ui/react";
 
 
 
@@ -17,24 +18,24 @@ function Signin() {
             <div class="ocean">
             <div class="wave"></div>
             </div>
-            <form className="cool" onSubmit={ handleLogin }>
+            <FormControl className="cool" onSubmit={ handleLogin }>
                 <div className="form-group">
                     <h1 className="form-header">Sign in form</h1>
-                    <label htmlFor="username">Username</label>
+                    <FormLabel htmlFor="username">Username</FormLabel>
                     <input type="text" className="form-control" id="username" name="username" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="password">Password</label>
+                    <FormLabel htmlFor="password">Password</FormLabel>
                     <input type="password" className="form-control" id="password" name="password" />
                 </div>
                 
                 <p>Don't have an account? <a href="/signup" className="href">Sign up now</a></p>
                 
                 <div>
-                <button className='form-button' onClick={notify}>Submit!</button>
+                <Button  onClick={notify}>Submit!</Button>
                 <ToastContainer />
                 </div>               
-            </form>
+            </FormControl>
                 
             </div>
            
