@@ -13,16 +13,23 @@ export const useAuth = () => useContext( authContext );
 
 
 const AuthContextProvider = (props) => {
-
-  /* const [isAuth, setisAuth] = useState(false);
-  const [role, setRole] = useState('');
+  const [ isAuth , setIsAuth ] = useState( false );
   const [ signup , setSignup ] = useState( false );
-  const [capabilities, setCapabilities] = useState(); */
+  let user1 = {
+      username: cookies.load( "username" ),
+      user_id: cookies.load( "user_id" ),
+      role: cookies.load( "role" ),
+      token: cookies.load( "token" ),
+  };
 
-  //const [user, setUser] = useState({});
+  const clearUser = () => {
+      cookies.remove( "username" );
+      cookies.remove( "token" );
+      cookies.remove( "user_id" );
+      cookies.remove( "role" );
+      setIsAuth( false );
+  };
   const [user, dispatch] = useReducer(AuthReducer, initialState);
-
-
   const handleSignUp = async ( e ) => {
     e.preventDefault();
     if ( e.target.password.value !== e.target.confirmPassword.value ) {
@@ -92,6 +99,15 @@ const handleLogin = ( e ) => {
 }
 
 
+const checkSignIn = () => {
+  if ( cookies.load( 'token' ) ) {
+      setIsAuth( true );
+  } else {
+      setIsAuth( false );
+  }
+};
+
+
 
 /* validateLogin
 
@@ -117,7 +133,7 @@ const validateLogin = ( data ) => {
  */
 
 
-  const value = {  handleSignUp, checkToken,  user,  canDo, handleLogin, };
+  const value = {  handleSignUp, checkToken,  user,  canDo, handleLogin, isAuth, setIsAuth, signup, setSignup, clearUser, checkSignIn, user1 };
 
   return (
     <authContext.Provider value={value}>

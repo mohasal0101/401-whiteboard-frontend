@@ -2,6 +2,8 @@ import axios from "axios";
 import React from 'react';
 import '../App.css';
 import Button from 'react-bootstrap/Button';
+import { FormControl, FormLabel, Input} from "@chakra-ui/react";
+
 
 
 function AddCommentForm ( props, postId ) {
@@ -21,12 +23,12 @@ function AddCommentForm ( props, postId ) {
         <>
             <div className="add-comment-form">
                 <h2>Say something 😁</h2>
-                <form onSubmit={handleSubmit}>
+                <FormControl onSubmit={handleSubmit}>
                     <div className="form-control2">
-                        <textarea placeholder="Add Comment content" name="content"></textarea>
+                        <input placeholder="Add Comment content" name="content"></input>
                     </div>
                     <Button variant="primary">Comment</Button>
-                </form>
+                </FormControl>
             </div>
         </>
     );
