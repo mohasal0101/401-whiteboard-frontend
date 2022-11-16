@@ -22,6 +22,7 @@ import { authContext } from "./Context/AuthContext"; */
  }; */
 
  function App() {
+  
   const {isAuth, signup, checkSignIn} = useAuth()
   useEffect( () => {
     checkSignIn();

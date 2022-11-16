@@ -4,6 +4,7 @@ import "../App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FormControl, FormLabel, Button } from "@chakra-ui/react";
+  
 
 function Signin() {
   const { setSignup } = useContext(authContext);
@@ -14,6 +15,7 @@ function Signin() {
       <div class="ocean">
         <div class="wave"></div>
       </div>
+      <newTheme />
       <FormControl className="cool" onSubmit={handleLogin}>
         <div className="form-group">
           <h1 className="form-header">Sign in form</h1>
