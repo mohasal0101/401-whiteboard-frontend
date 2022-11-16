@@ -43,12 +43,14 @@ function Signup() {
           </div>
           <Button> Submit</Button>
 
+
           <p>
             Already have an account?{" "}
-            <a href="/signin" onClick={setSignup} className="href">
+            <a href="/" onClick={() => setSignup(false)} className="href">
               Sign in now
             </a>
           </p>
+
         </FormControl>
       </div>
       {/* <Footer/>
