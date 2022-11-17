@@ -5,6 +5,7 @@ import React, { useContext } from "react";
 import "../App.css";
 import { authContext } from "../Context/AuthContext";
 import { FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
+import '../Chakra Theme/theme'
 
 function Signup() {
   const { handleSignUp, setSignup } = useContext(authContext);
@@ -43,14 +44,12 @@ function Signup() {
           </div>
           <Button> Submit</Button>
 
-
           <p>
             Already have an account?{" "}
             <a href="/" onClick={() => setSignup(false)} className="href">
               Sign in now
             </a>
           </p>
-
         </FormControl>
       </div>
       {/* <Footer/>
