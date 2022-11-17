@@ -4,18 +4,18 @@ import "../App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FormControl, FormLabel, Button } from "@chakra-ui/react";
-  
+
 
 function Signin() {
   const { setSignup } = useContext(authContext);
   const { notify } = useContext(authContext);
   const { handleLogin } = useContext(authContext);
   return (
+    
     <div className="container">
       <div class="ocean">
         <div class="wave"></div>
       </div>
-      <newTheme />
       <FormControl className="cool" onSubmit={handleLogin}>
         <div className="form-group">
           <h1 className="form-header">Sign in form</h1>
@@ -40,7 +40,7 @@ function Signin() {
         <p>
           Dont have an account?{" "}
           <a href="/signup" onClick={() => setSignup(true)} className="href">
-            Sign in now
+            Sign up now
           </a>
         </p>
 

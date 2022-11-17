@@ -1,5 +1,3 @@
-import "./App.css";
-import "./App.scss";
 import Post from "./components/Post";
 import AddPostForm from "./components/Add-post-form";
 import React from 'react';
@@ -9,6 +7,8 @@ import Signup from "./components/Signup";
 import Signin from "./components/Signin";
 import { useAuth } from "./Context/AuthContext";
 import Navbar from "./navbarS";
+import Theme from "./Chakra Theme/theme";
+
 
 /* import NavBar from "./navbarS";
 import Carousel from './components/Carousel';
@@ -31,6 +31,7 @@ import { authContext } from "./Context/AuthContext"; */
   
   return (
     <div className="App">
+      <Theme />
       <Navbar />
       <When condition={isAuth}>
         <AddPostForm/>
