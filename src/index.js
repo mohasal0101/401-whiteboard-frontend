@@ -9,7 +9,10 @@ import Signin from "./components/Signin";
 import AuthContextProvider from "./Context/AuthContext";
 import SigninProvider from "./Context/LoginContext";
 import cookies from "react-cookies";
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import "./App.css";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,6 +20,7 @@ root.render(
     <SigninProvider>
       <BrowserRouter>
         <ChakraProvider>
+          <Provider store={store}>
           <Routes>
             <Route path="/" element={<Signin />} />
             <Route path="/signup" element={<Signup />} />
@@ -26,6 +30,7 @@ root.render(
               <Route path="/posts" element={<Signin />} />
             )}
           </Routes>
+          </Provider>
         </ChakraProvider>
       </BrowserRouter>
     </SigninProvider>
