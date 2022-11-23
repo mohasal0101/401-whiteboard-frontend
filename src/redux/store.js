@@ -4,11 +4,13 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import signinSlicer from './signinSlicer';
 import signupSlicer from './signupSlicer';
+import postSlicer from './postSlicer';
 
 export default configureStore({
     reducer: {
         signin: signinSlicer,
-        signup: signupSlicer
+        signup: signupSlicer,
+        posts: postSlicer,
     }
 });
 

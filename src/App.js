@@ -1,4 +1,4 @@
-import Post from "./components/Post";
+/* import Post from "./components/Post";
 import AddPostForm from "./components/Add-post-form";
 import React from 'react';
 import { useEffect } from "react";
@@ -52,3 +52,10 @@ import { authContext } from "./Context/AuthContext"; */
 }
 
 export default App;
+
+
+
+
+
+
+
